@@ -1,28 +1,11 @@
-import { client, getPost } from "@/lib/sanityClient"
-import imageUrlBuilder from '@sanity/image-url'
+import { client, getPost } from '@/lib/sanityClient'
 import { PortableText } from '@portabletext/react'
+import { urlFor, ptComponents } from '@/lib/portableTextUtils'
 import Tag from '@/components/blog/tag'
-import DateTag from "@/components/dateTag"
-import Image from "next/image"
-import { Key } from "react"
+import DateTag from '@/components/dateTag'
+import Image from 'next/image'
+import { Key } from 'react'
 import { notFound } from 'next/navigation'
-
-function urlFor (source :any ) {
-  return imageUrlBuilder(client).image(source)
-}
-
-const ptComponents = {
-  types: {
-    image: ({ value } : any) => {
-      if (!value?.asset?._ref) {
-        return null
-      }
-      return (
-        <Image src={ urlFor( value ).width( 320 ).height( 240 ).fit( 'max' ).auto( 'format' ).url() }  alt={ value.alt || ' ' } />
-      )
-    }
-  }
-}
 
 export async function generateStaticParams() {
   const paths = await client.fetch(

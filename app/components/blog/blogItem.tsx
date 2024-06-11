@@ -1,26 +1,8 @@
-import Image from "next/image"
-import { BlogItemProps } from "@/types/BlogItemProps"
-import imageUrlBuilder from '@sanity/image-url'
+import Image from 'next/image'
+import { BlogItemProps } from '@/types/BlogItemProps'
 import { PortableText } from '@portabletext/react'
 import Tag from '@/components/blog/tag'
-import { client } from "@/lib/sanityClient"
-
-function urlFor (source :any ) {
-  return imageUrlBuilder(client).image(source)
-}
-
-const ptComponents = {
-  types: {
-    image: ({ value } : any) => {
-      if (!value?.asset?._ref) {
-        return null
-      }
-      return (
-        <Image src={ urlFor( value ).width( 320 ).height( 240 ).fit( 'max' ).auto( 'format' ).url() }  alt={ value.alt || ' ' } />
-      )
-    }
-  }
-}
+import { urlFor, ptComponents } from '@/lib/portableTextUtils'
 
 export function BlogItem({ blogPost , side = "left" }: BlogItemProps) {
   return (

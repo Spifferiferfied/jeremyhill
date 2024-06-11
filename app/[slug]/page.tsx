@@ -1,25 +1,7 @@
 import { client, getPage } from '@/lib/sanityClient'
-import imageUrlBuilder from '@sanity/image-url'
 import { PortableText } from '@portabletext/react'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
-
-function urlFor (source :any ) {
-  return imageUrlBuilder(client).image(source)
-}
-
-const ptComponents = {
-  types: {
-    image: ({ value } : any) => {
-      if (!value?.asset?._ref) {
-        return null
-      }
-      return (
-        <Image src={ urlFor( value ).width( 320 ).height( 240 ).fit( 'max' ).auto( 'format' ).url() }  alt={ value.alt || ' ' } />
-      )
-    }
-  }
-}
+import { ptComponents } from '@/lib/portableTextUtils'
 
 export async function generateStaticParams() {
   const paths = await client.fetch(
@@ -30,7 +12,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: any ) {
   const page = await getPage((params?.slug))
-  page || notFound()
+  page || notFound();
   const { title, body } = page
   return (
     <main className="container mx-auto w-full">
