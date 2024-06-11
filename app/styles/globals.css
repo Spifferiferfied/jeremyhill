@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
@@ -29,8 +28,7 @@
 }
 body {
   color: rgb(var(--foreground-rgb));
-  background:
-    rgb(var(--background-rgb));
+  background: rgb(var(--background-rgb));
 }
 
 @layer utilities {
@@ -45,7 +43,8 @@ body {
 nav a {
   color: var(--foreground-rgb);
   @apply no-underline;
-  &:hover, &.active {
+  &:hover,
+  &.active {
     @apply text-blue-600 underline cursor-pointer;
   }
 }
@@ -63,7 +62,7 @@ a {
 }
 
 @define-mixin tag $name, $color {
-  .tag-$(name){
+  .tag-$(name) {
     background-color: var(--color-$(color)-600);
   }
   .blog-item-$(name) {
@@ -76,7 +75,11 @@ a {
   }
 }
 
-@mixin tag travel, red {}
-@mixin tag collections, blue {}
-@mixin tag development, plum {}
-@mixin tag vinyl, yellow {}
+@mixin tag travel, red {
+}
+@mixin tag collections, blue {
+}
+@mixin tag development, plum {
+}
+@mixin tag vinyl, yellow {
+}

@@ -10,26 +10,31 @@ export const client = createClient({
   // token: process.env.SANITY_API_WRITE_TOKEN // Only if you want to update content with the client
 })
 
-
-export const getPost = async ( slug : String ) => {
-  const post = await client.fetch(groq`
+export const getPost = async (slug: String) => {
+  const post = await client.fetch(
+    groq`
     *[_type == "post" && slug.current == $slug][0]{ title, "tags": categories[]->title, mainImage, body, "date": _createdAt }
-  `, { slug })
+  `,
+    { slug },
+  )
 
   return post
 }
 
-export const getPage = async ( slug : String ) => {
-  const page = await client.fetch(groq`
+export const getPage = async (slug: String) => {
+  const page = await client.fetch(
+    groq`
     *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }
-  `, { slug })
+  `,
+    { slug },
+  )
 
   return page
 }
 
-export const getPosts = async ( count = 4 ) => {
+export const getPosts = async (count = 4) => {
   const posts = await client.fetch(groq`
-    *[_type == "post"][0..${ count - 1 }] | order(publishedAt desc){ slug, title, "tag": categories[0]->title, blurb, mainImage }
+    *[_type == "post"][0..${count - 1}] | order(publishedAt desc){ slug, title, "tag": categories[0]->title, blurb, mainImage }
   `)
   return posts
 }

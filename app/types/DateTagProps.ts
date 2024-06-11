@@ -1,5 +1,5 @@
 export interface DateTagProps {
-  dateTime: string,
-  formatString: string,
-  className: string,
+  dateTime: string
+  formatString: string
+  className: string
 }

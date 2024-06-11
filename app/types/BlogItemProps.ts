@@ -1,6 +1,6 @@
-import { BlogPost } from "./BlogPost";
+import { BlogPost } from './BlogPost'
 
 export interface BlogItemProps {
-  blogPost: BlogPost,
-  side: String,
+  blogPost: BlogPost
+  side: String
 }

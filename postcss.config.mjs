@@ -6,6 +6,6 @@ const config = {
     'postcss-mixins': {},
     tailwindcss: {},
   },
-};
+}
 
-export default config;
+export default config
