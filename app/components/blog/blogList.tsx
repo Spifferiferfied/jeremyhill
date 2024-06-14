@@ -1,10 +1,10 @@
 import { BlogItem } from './blogItem'
-import { BlogListProps } from '@/types/BlogListProps'
+import { BlogListProps, BlogListFilter } from '@/types/BlogListProps'
 import { BlogPost } from '@/types/BlogPost'
 import { getPosts } from '@/lib/sanityClient'
 
-export default async function BlogList({ count = 4 }: BlogListProps) {
-  const posts = await getPosts(count)
+export default async function BlogList({ count = 4, filter = {} as BlogListFilter }: BlogListProps) {
+  const posts = await getPosts(count, filter)
 
   return (
     <div className="w-full flex flex-col justify-items-start content-center flex-wrap">

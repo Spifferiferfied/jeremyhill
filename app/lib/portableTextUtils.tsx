@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { client } from '@/lib/sanityClient'
 import { PortableTextComponents } from '@portabletext/react'
 
+const builder = imageUrlBuilder(client)
+
 export function urlFor(source: any) {
-  return imageUrlBuilder(client).image(source)
+  return builder.image(source)
 }
 
 const imageComponent = ({ value }: { value: any }) => {
@@ -20,6 +22,11 @@ const imageComponent = ({ value }: { value: any }) => {
 }
 
 export const ptComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }: any) => {
+      return <p className="mb-4">{ children }</p>;
+    },
+  },
   types: {
     image: imageComponent,
   },

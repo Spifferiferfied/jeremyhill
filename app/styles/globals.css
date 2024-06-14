@@ -45,41 +45,44 @@ nav a {
   @apply no-underline;
   &:hover,
   &.active {
-    @apply text-blue-600 underline cursor-pointer;
+    @apply text-blue-400 underline cursor-pointer;
   }
 }
 
 a {
-  @apply text-blue-600 underline;
+  @apply text-blue-400 underline;
 }
 
 .btn {
-  @apply no-underline px-4 py-2 bg-red-400 text-white;
-}
-
-.test {
-  color: red;
+  @apply no-underline px-4 py-2 bg-red-600 text-white;
 }
 
 @define-mixin tag $name, $color {
   .tag-$(name) {
-    background-color: var(--color-$(color)-600);
+    background-color: var(--color-$(color)-400);
   }
   .blog-item-$(name) {
     article {
-      background-color: var(--color-$(color)-400);
+      background-color: var(--color-$(color)-600);
       .read-more {
-        background-color: var(--color-$(color)-600);
+        background-color: var(--color-$(color)-400);
       }
     }
   }
 }
 
-@mixin tag travel, red {
+[class*='tag-'] {
+  background-color: var(--color-grey-400);
 }
-@mixin tag collections, blue {
+[class*='blog-item-'] {
+  article {
+    background-color: var(--color-grey-600);
+    .read-more {
+      background-color: var(--color-grey-400);
+    }
+  }
 }
-@mixin tag development, plum {
-}
-@mixin tag vinyl, yellow {
-}
+@mixin tag travel, red {}
+@mixin tag collections, blue {}
+@mixin tag development, plum {}
+@mixin tag vinyl, yellow {}

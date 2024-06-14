@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -16,19 +17,19 @@ export default function Hero() {
           <h1 className="text-6xl bold font-bold uppercase">Jeremy Hill</h1>
           is <br />
           an{' '}
-          <a href="https://www.linkedin.com/in/jhill83/">Engineering Manager</a>
-          , <br />a <a href="https://github.com/Spifferiferfied">UI Engineer</a>
+          <Link href="https://www.linkedin.com/in/jhill83/">Engineering Manager</Link>
+          , <br />a <Link href="https://github.com/Spifferiferfied">UI Engineer</Link>
           , <br />
           an{' '}
-          <a href="https://www.instagram.com/jeremyhill83/">
+          <Link href="https://www.instagram.com/jeremyhill83/">
             Amateur Photographer
-          </a>
+          </Link>
           , <br />
           an{' '}
-          <a href="https://morty.app/@Spifferiferfied">
+          <Link href="https://morty.app/@Spifferiferfied">
             Escape Room Aficionado
-          </a>
-          , <br />a <a href="/collections">Collector of Collections</a>.
+          </Link>
+          , <br />a <Link href="/collections">Collector of Collections</Link>.
         </div>
       </div>
     </div>

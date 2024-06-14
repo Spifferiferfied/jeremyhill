@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export default function Header() {
@@ -11,23 +12,23 @@ export default function Header() {
       <nav className="w-full">
         <ul className="uppercase font-semibold flex flex-row justify-between">
           <li className="mx-4">
-            <a
+            <Link
               className={usePathname() === '/about' ? 'active' : ''}
               href="/about"
             >
               About
-            </a>
+            </Link>
           </li>
           <li className="mx-4">
-            <a
+            <Link
               className={usePathname() === '/blog' ? 'active' : ''}
               href="/blog"
             >
               Musings
-            </a>
+            </Link>
           </li>
           <li className="-mt-5">
-            <a href="/">
+            <Link href="/">
               <Image
                 className="-mb-5 bg-white px-3"
                 src="/images/logo.svg"
@@ -35,13 +36,13 @@ export default function Header() {
                 width={77}
                 alt="Jeremy Hill logo"
               />{' '}
-            </a>
+            </Link>
           </li>
           <li className="mx-4">
-            <a href="https://www.instagram.com/jeremyhill83/">Photography</a>
+            <Link href="https://www.instagram.com/jeremyhill83/">Photography</Link>
           </li>
           <li className="mx-4">
-            <a href="https://github.com/Spifferiferfied">Code</a>
+            <Link href="https://github.com/Spifferiferfied">Code</Link>
           </li>
         </ul>
       </nav>

@@ -1,11 +1,11 @@
-import { Tag } from './Tag'
+import { Category } from './Category'
 export interface BlogPost {
-  slug: any
-  title: string
-  blurb: any
-  tag: string
-  body: any
-  date: string
-  tags: Tag[]
-  mainImage: any
+  slug: any,
+  title: string,
+  blurb: any,
+  category: Category,
+  body: any,
+  date: string,
+  subCategories: Category[],
+  mainImage: any,
 }

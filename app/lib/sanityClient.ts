@@ -1,5 +1,7 @@
 // client.ts
 import { createClient } from '@sanity/client'
+import { BlogListFilter } from '@/types/BlogListProps'
+import { BlogPost } from '@/types/BlogPost'
 import groq from 'groq'
 
 export const client = createClient({
@@ -13,8 +15,15 @@ export const client = createClient({
 export const getPost = async (slug: String) => {
   const post = await client.fetch(
     groq`
-    *[_type == "post" && slug.current == $slug][0]{ title, "tags": categories[]->title, mainImage, body, "date": _createdAt }
-  `,
+    *[_type == "post" && slug.current == $slug][0]
+    {
+    title,
+    "category": category->,
+    "subCategories": subCategories[]->,
+    mainImage,
+    body,
+    "date": _createdAt
+    }`,
     { slug },
   )
 
@@ -24,17 +33,38 @@ export const getPost = async (slug: String) => {
 export const getPage = async (slug: String) => {
   const page = await client.fetch(
     groq`
-    *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }
-  `,
+    *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }`,
     { slug },
   )
 
   return page
 }
+export const getCategory = async (name: String) => {
+  const page = await client.fetch(
+    groq`
+    *[_type == "category" && name.current == $name][0]`,
+    { name },
+  )
 
-export const getPosts = async (count = 4) => {
-  const posts = await client.fetch(groq`
-    *[_type == "post"][0..${count - 1}] | order(publishedAt desc){ slug, title, "tag": categories[0]->title, blurb, mainImage }
-  `)
+  return page
+}
+
+export const getPosts = async (count = 4, filter = { } as BlogListFilter) => {
+  let filterString = ''
+  let params = { }
+  if( filter?.category ) {
+    filterString += groq`&& ($category == category->name.current || $category in subCategories[]->name.current)`
+    params = { category: filter?.category }
+  }
+  const query = groq`*[_type == "post"
+  ${filterString}]
+  [${filter?.page ? filter.page * count : 0}..${filter?.page ? (filter.page + 1) * count : count - 1}]
+   | order(publishedAt desc)
+   { slug,
+    title,
+    "category": category->,
+    blurb,
+    mainImage }`
+  const posts = await client.fetch( query, params, )
   return posts
 }
