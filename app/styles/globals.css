@@ -84,5 +84,7 @@ a {
 }
 @mixin tag travel, red {}
 @mixin tag collections, blue {}
-@mixin tag development, plum {}
-@mixin tag vinyl, yellow {}
+@mixin tag photography, plum {}
+@mixin tag development, yellow {}
+@mixin tag games, green {}
+@mixin tag personal, orange {}
