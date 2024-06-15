@@ -3,27 +3,34 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function Header() {
-  let [ mobileOpen, setMobileOpen ]= useState(false)
+  const [ mobileNavClass, setMobileNavClass ] = useState('close')
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+   useEffect(() => {
+    setMobileNavClass('')
+   }, [pathname, searchParams])
+
   return (
     <header
-      className={`flex flex-col items-center justify-between pt-7 border-b border-b-black font-heading container mx-auto`}
+      className={`flex flex-col items-center justify-between pt-7 border-b border-b-black font-heading container mx-auto h-20 md:h-auto`}
     >
       <nav className="w-full">
-        <button className="md:hidden absolute top-4 left-4 z-30" onClick={() => {
-          setMobileOpen(!mobileOpen)
+        <button className="md:hidden absolute top-4 left-4 z-30 bg-white" onClick={() => {
+          mobileNavClass === 'open' ?  setMobileNavClass('close') : setMobileNavClass('open')
           return false
         }}>
           <Image src="/images/icons/hamburger-menu.svg" height={ 38 } width={ 43 } alt="Menu" />
         </button>
-        <ul className={ `${ mobileOpen ? 'md:hidden' : 'hidden' } absolute left-0 top-0 right-0 pt-14 bg-white border-b mobile-header z-20` }>
+        <ul className={ `${ mobileNavClass } absolute left-0 top-20 right-0 bg-white mobile-header z-10` }>
           <li>
-            <Link className={ `p-4 block $(usePathname() === '/about' ? 'active' : '')` } href="/about">About</Link>
+            <Link className={ `p-4 block ${ pathname === '/about' ? 'active' : '' }` } href="/about">About</Link>
           </li>
           <li>
-            <Link className={ `p-4 block $(usePathname() === '/blog' ? 'active' : '')` } href="/blog">Musings</Link>
+            <Link className={ `p-4 block ${ pathname === '/blog' ? 'active' : '' }` } href="/blog">Musings</Link>
           </li>
           <li>
             <Link className="p-4 block" href="https://www.instagram.com/jeremyhill83/">Photography</Link>
@@ -32,10 +39,10 @@ export default function Header() {
             <Link className="p-4 block" href="https://github.com/Spifferiferfied">Code</Link>
           </li>
         </ul>
-        <ul className="uppercase font-semibold flex flex-row justify-center content-center md:justify-between">
+        <ul className="uppercase font-semibold flex flex-row justify-center content-center md:justify-between z-20 relative">
           <li className="mx-4 hidden md:block">
             <Link
-              className={usePathname() === '/about' ? 'active' : ''}
+              className={pathname === '/about' ? 'active' : ''}
               href="/about"
             >
               About
@@ -43,7 +50,7 @@ export default function Header() {
           </li>
           <li className="mx-4 hidden md:block">
             <Link
-              className={usePathname() === '/blog' ? 'active' : ''}
+              className={pathname === '/blog' ? 'active' : ''}
               href="/blog"
             >
               Musings
