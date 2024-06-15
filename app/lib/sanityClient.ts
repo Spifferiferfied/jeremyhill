@@ -49,22 +49,30 @@ export const getCategory = async (name: String) => {
   return page
 }
 
-export const getPosts = async (count = 4, filter = { } as BlogListFilter) => {
+export const getPosts = async (count: number | null, filter = { } as BlogListFilter) => {
   let filterString = ''
   let params = { }
+  let countString = ''
   if( filter?.category ) {
     filterString += groq`&& ($category == category->name.current || $category in subCategories[]->name.current)`
     params = { category: filter?.category }
   }
+  if(count) {
+    countString = `[${filter?.page ? filter.page * count : 0}..${filter?.page ? (filter.page + 1) * count : count - 1}]`
+  }
   const query = groq`*[_type == "post"
-  ${filterString}]
-  [${filter?.page ? filter.page * count : 0}..${filter?.page ? (filter.page + 1) * count : count - 1}]
-   | order(publishedAt desc)
-   { slug,
-    title,
-    "category": category->,
-    blurb,
-    mainImage }`
+    ${ filterString }]
+    ${ countString }
+    | order(publishedAt desc)
+    {
+      slug,
+      title,
+      "category": category->,
+      blurb,
+      mainImage
+    }`
+
   const posts = await client.fetch( query, params, )
+
   return posts
 }

@@ -3,7 +3,7 @@ export interface BlogListFilter  {
   page?: number,
 }
 export interface BlogListProps {
-  count: number,
+  count?: null | number,
   filter?: BlogListFilter,
 }
 
