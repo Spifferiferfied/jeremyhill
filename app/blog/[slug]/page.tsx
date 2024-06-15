@@ -44,9 +44,9 @@ export default async function Post({ params }: any) {
         {mainImage && (
           <div>
             <Image
-              src={urlFor(mainImage).width(1500).height(500).url()}
+              src={urlFor(mainImage).width(1500).url()}
               className="mb-4 w-full"
-              height={500}
+              height={1000}
               width={1000}
               alt={mainImage.alt}
             />
