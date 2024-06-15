@@ -60,10 +60,12 @@ a {
 @define-mixin tag $name, $color,  {
   .tag-$(name) {
     background-color: var(--color-$(color)-400);
+    color: var(--color-white);
   }
   .blog-item-$(name) {
     article {
       background-color: var(--color-$(color)-600);
+      color: var(--color-white);
       a {
         color: var(--color-white);
       }
