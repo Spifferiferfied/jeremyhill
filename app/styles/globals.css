@@ -57,13 +57,34 @@ a {
   @apply no-underline px-4 py-2 bg-red-600 text-white;
 }
 
-@define-mixin tag $name, $color {
+@define-mixin tag $name, $color,  {
   .tag-$(name) {
     background-color: var(--color-$(color)-400);
   }
   .blog-item-$(name) {
     article {
       background-color: var(--color-$(color)-600);
+      a {
+        color: var(--color-white);
+      }
+      .read-more {
+        background-color: var(--color-$(color)-400);
+      }
+    }
+  }
+}
+@define-mixin tag-dark $name, $color,  {
+  .tag-$(name) {
+    background-color: var(--color-$(color)-400);
+    color: var(--color-black);
+  }
+  .blog-item-$(name) {
+    article {
+      background-color: var(--color-$(color)-600);
+      color: var(--color-black);
+      a {
+        color: var(--color-black);
+      }
       .read-more {
         background-color: var(--color-$(color)-400);
       }
@@ -73,10 +94,15 @@ a {
 
 [class*='tag-'] {
   background-color: var(--color-grey-400);
+  color: var(--color-black);
 }
 [class*='blog-item-'] {
   article {
     background-color: var(--color-grey-600);
+    color: var(--color-black);
+    a {
+      color: var(--color-black);
+    }
     .read-more {
       background-color: var(--color-grey-400);
     }
@@ -85,6 +111,7 @@ a {
 @mixin tag travel, red {}
 @mixin tag collections, blue {}
 @mixin tag photography, plum {}
-@mixin tag development, yellow {}
-@mixin tag games, green {}
-@mixin tag personal, orange {}
+@mixin tag-dark development, teal {}
+@mixin tag-dark games, gold {}
+@mixin tag-dark personal, orange {}
+@mixin tag-dark escape-rooms, yellow {}

@@ -14,7 +14,7 @@
     "@sanity/image-url": "^1.0.2",
     "date-fns": "^3.6.0",
     "groq": "^3.45.0",
-    "next": "14.2.3",
+    "next": "^14.2.4",
     "postcss-mixins": "^10.0.1",
     "react": "^18",
     "react-dom": "^18"
