@@ -3,16 +3,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function Header() {
   const [ mobileNavClass, setMobileNavClass ] = useState('close')
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-   useEffect(() => {
+  useEffect(() => {
     setMobileNavClass('')
-   }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <header
