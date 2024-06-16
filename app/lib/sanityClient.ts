@@ -25,7 +25,6 @@ export const getPost = async (slug: String) => {
     "date": _createdAt
     }`,
     { slug },
-    { next: { revalidate: 30 } }
   )
 
   return post
@@ -45,6 +44,7 @@ export const getCategory = async (name: String) => {
     groq`
     *[_type == "category" && name.current == $name][0]`,
     { name },
+    { next: { revalidate: 30 } },
   )
 
   return page
