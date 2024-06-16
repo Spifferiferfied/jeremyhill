@@ -44,7 +44,10 @@ export const getCategory = async (name: String) => {
     groq`
     *[_type == "category" && name.current == $name][0]`,
     { name },
-    { next: { revalidate: 30 } },
+    {
+      cache: 'no-store',
+      next: { revalidate: 30 }
+    },
   )
 
   return page
