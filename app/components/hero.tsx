@@ -13,7 +13,7 @@ export default function Hero() {
         />
       </div>
       <div className="-mt-32 md:mt-0 text-center w-full md:w-1/2 flex flex-col justify-center z-10 px-6">
-        <div className="text-3xl bg-white bg-opacity-80 py-2 font-heading">
+        <div className="hero-text text-3xl bg-white bg-opacity-80 py-2 font-heading">
           <h1 className="text-6xl bold font-bold uppercase">Jeremy Hill</h1>
           is <br />
           an{' '}
