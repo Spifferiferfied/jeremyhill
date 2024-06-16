@@ -36,7 +36,7 @@ export const getPage = async (slug: String) => {
     *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }`,
     { slug },
     {
-      next: { revalidate: 30 }
+      next: { revalidate: 3600 }
     },
   )
 
