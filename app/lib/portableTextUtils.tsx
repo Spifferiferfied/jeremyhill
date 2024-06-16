@@ -13,7 +13,6 @@ const imageComponent = ({ value }: { value: any }) => {
   if (!value?.asset?._ref) {
     return null
   }
-  console.log(value)
   return (
     <div className={ `${ value?.float ? `float-${ value.float }` : '' }` } >
       <Image
