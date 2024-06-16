@@ -26,6 +26,9 @@ export const ptComponents: PortableTextComponents = {
     normal: ({ children }: any) => {
       return <p className="mb-4">{ children }</p>;
     },
+    h2: ({ children }) => {
+      return <h2 className="mb-4 font-heading text-3xl">{ children }</h2>
+    }
   },
   types: {
     image: imageComponent,
