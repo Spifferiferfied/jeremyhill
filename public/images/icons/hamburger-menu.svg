@@ -8,7 +8,7 @@
       }
     </style>
   </defs>
-  <path class="cls-1" d="M3,6h37c1.7,0,3-1.3,3-3s-1.3-3-3-3H3C1.3,0,0,1.3,0,3s1.3,3,3,3Z"/>
-  <path class="cls-1" d="M3,22h37c1.7,0,3-1.3,3-3s-1.3-3-3-3H3c-1.7,0-3,1.3-3,3s1.3,3,3,3Z"/>
-  <path class="cls-1" d="M3,38h37c1.7,0,3-1.3,3-3s-1.3-3-3-3H3c-1.7,0-3,1.3-3,3s1.3,3,3,3Z"/>
+  <path class="cls-1" d="M43,0H0v6h43V0Z"/>
+  <path class="cls-1" d="M43,16H0v6h43v-6Z"/>
+  <path class="cls-1" d="M43,32H0v6h43v-6Z"/>
 </svg>

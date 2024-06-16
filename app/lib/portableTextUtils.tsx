@@ -13,11 +13,18 @@ const imageComponent = ({ value }: { value: any }) => {
   if (!value?.asset?._ref) {
     return null
   }
+  console.log(value)
   return (
-    <Image
-      src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
-      alt={value.alt || ' '}
-    />
+    <>
+      <Image
+        src={urlFor(value).width(1500).fit('max').auto('format').url()}
+        alt={value.alt || ' '}
+        width={1500}
+        height={1500}
+        className="mb-2"
+      />
+      <figcaption className="mb-6 font-bold text-center">{ value.caption }</figcaption>
+    </>
   )
 }
 

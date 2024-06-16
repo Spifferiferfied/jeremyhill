@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Lato, Oswald } from 'next/font/google'
 import Header from '@/components/shared/header'
 import Footer from '@/components/shared/footer'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import '@/styles/globals.css'
 
 const lato = Lato({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   )

@@ -25,6 +25,7 @@ export const getPost = async (slug: String) => {
     "date": _createdAt
     }`,
     { slug },
+    { next: { revalidate: 30 } }
   )
 
   return post
