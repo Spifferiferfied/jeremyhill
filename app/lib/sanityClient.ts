@@ -35,6 +35,9 @@ export const getPage = async (slug: String) => {
     groq`
     *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }`,
     { slug },
+    {
+      next: { revalidate: 30 }
+    },
   )
 
   return page
@@ -44,10 +47,6 @@ export const getCategory = async (name: String) => {
     groq`
     *[_type == "category" && name.current == $name][0]`,
     { name },
-    {
-      cache: 'no-store',
-      next: { revalidate: 30 }
-    },
   )
 
   return page
