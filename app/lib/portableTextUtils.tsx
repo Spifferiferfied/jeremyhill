@@ -2,6 +2,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import Image from 'next/image'
 import { client } from '@/lib/sanityClient'
 import { PortableTextComponents } from '@portabletext/react'
+import { SanityInlineImage } from '@/types/SanityInlineImage'
 
 const builder = imageUrlBuilder(client)
 
@@ -9,7 +10,7 @@ export function urlFor(source: any) {
   return builder.image(source)
 }
 
-const imageComponent = ({ value }: { value: any }) => {
+const imageComponent = ({ value }: { value: SanityInlineImage }) => {
   if (!value?.asset?._ref) {
     return null
   }

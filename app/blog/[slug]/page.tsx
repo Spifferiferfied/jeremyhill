@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   return paths.map((slug: String) => ({ params: { slug } }))
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params }: { params: { slug: string } }) {
   const post = await getPost(params?.slug)
   post || notFound()
   const { title, category, subCategories, mainImage, body, date } = post

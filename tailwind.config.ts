@@ -139,12 +139,12 @@ const config: Config = {
     },
   },
   plugins: [
-    function ({ addBase, theme }: any) {
+    function ({ addBase, theme }: { addBase: Function, theme: Function}) {
       function extractColorVars(colorObj: any, colorGroup = '') {
-        return Object.keys(colorObj).reduce((vars, colorKey) => {
+        return Object.keys(colorObj).reduce((vars, colorKey: string) => {
           const value = colorObj[colorKey]
 
-          const newVars: any =
+          const newVars: object =
             typeof value === 'string'
               ? { [`--color${colorGroup}-${colorKey}`]: value }
               : extractColorVars(value, `-${colorKey}`)

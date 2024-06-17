@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   return paths.map((category: String) => ({ params: { category } }))
 }
 
-export default async function ByCategory({ params }: any) {
+export default async function ByCategory({ params }: { params: { category: string } }) {
   const category = await getCategory( params.category )
   return (
     <main className="container mx-auto w-full">

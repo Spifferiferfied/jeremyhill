@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   return paths.map((slug: String) => ({ params: { page: slug } }))
 }
 
-export default async function Page({ params }: any) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getPage(params?.slug)
   page || notFound()
   const { title, body } = page

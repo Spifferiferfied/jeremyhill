@@ -4,7 +4,7 @@ import { BlogPost } from '@/types/BlogPost'
 import { getPosts } from '@/lib/sanityClient'
 
 export default async function BlogList({ count = null, filter = {} as BlogListFilter }: BlogListProps) {
-  const posts = await getPosts(count, filter)
+  const posts = await getPosts(count, filter) as Array<BlogPost>
 
   return (
     <div className="w-full flex flex-col justify-items-start content-center flex-wrap">
@@ -15,7 +15,7 @@ export default async function BlogList({ count = null, filter = {} as BlogListFi
               <BlogItem
                 blogPost={post as BlogPost}
                 side={index % 2 == 0 ? 'left' : 'right'}
-                key={post.slug}
+                key={ post?.slug?.current }
               />
             )
           })}
