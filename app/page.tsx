@@ -7,11 +7,11 @@ export default function Home() {
     <main className="container mx-auto w-full">
       <Hero />
       <BlogList count={ 4 }></BlogList>
-      <div className="text-center mb-6">
+      {/* <div className="text-center mb-6">
         <Link href="/blog" className="btn">
           Read More
         </Link>
-      </div>
+      </div> */}
     </main>
   )
 }
