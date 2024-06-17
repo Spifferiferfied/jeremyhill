@@ -55,6 +55,6 @@ export type SanityImageHotspot = {
 
 export type Slug = {
   _type: 'slug'
-  current?: string
+  current: string
   source?: string
 }

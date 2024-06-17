@@ -6,9 +6,9 @@ export interface BlogPost {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
-  slug?: Slug
-  mainImage?: {
+  title: string
+  slug: Slug
+  mainImage: {
     asset?: {
       _ref: string
       _type: 'reference'
@@ -17,21 +17,25 @@ export interface BlogPost {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
+    alt: string
     caption?: string
     _type: 'image'
   }
-  category?: {
+  category: {
     _ref: string
     _type: 'reference'
     _weak?: boolean
+    title: string,
+    name: Slug,
     [internalGroqTypeReferenceTo]?: 'category'
   }
-  subCategories?: Array<{
+  subCategories: Array<{
     _ref: string
     _type: 'reference'
     _weak?: boolean
     _key: string
+    title: string,
+    name: Slug,
     [internalGroqTypeReferenceTo]?: 'category'
   }>
   publishedAt?: string

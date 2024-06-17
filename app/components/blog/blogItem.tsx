@@ -34,7 +34,9 @@ export function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
           </Link>
         </h2>
         <div className="leading-6 mb-4">
-          <PortableText value={ blogPost.blurb } components={ ptComponents } />
+          { blogPost.blurb && (
+              <PortableText value={ blogPost.blurb } components={ ptComponents } />
+          )}
         </div>
         <Link
           className="text-sm inline-block px-2 py-1 read-more float-right hover:underline no-underline text-white"
