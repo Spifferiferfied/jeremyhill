@@ -1,4 +1,3 @@
-import { Category } from './Category'
 import { BlockContent, SanityImageCrop, SanityImageHotspot, Slug, internalGroqTypeReferenceTo } from './SanityTypes'
 export interface BlogPost {
   _id: string
@@ -40,5 +39,5 @@ export interface BlogPost {
   }>
   publishedAt?: string
   body?: BlockContent
-  blurb?: BlockContent
+  blurb?: string
 }
