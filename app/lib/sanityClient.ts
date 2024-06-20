@@ -27,7 +27,7 @@ export const getPost = async (slug: string) => {
     { slug },
     {
       next: { revalidate: 3600 },
-    }
+    },
   )
 
   return post
