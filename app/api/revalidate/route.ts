@@ -6,7 +6,7 @@ type WebhookPayload = {
   _type: string
 }
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     const { isValidSignature, body } = await parseBody<WebhookPayload>(
       req,

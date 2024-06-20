@@ -20,6 +20,7 @@
     "react/jsx-filename-extension": [ 1, { "extensions": [ ".tsx" ] } ],
     "no-underscore-dangle": [ 0, { "allow": [ "_ref" ] } ],
     "@stylistic/jsx-curly-spacing": [2, {"when": "always"}],
-    "@stylistic/template-curly-spacing": ["error", "always"]
+    "@stylistic/template-curly-spacing": ["error", "always"],
+    "import/prefer-default-export": [ "off" ]
   }
 }
