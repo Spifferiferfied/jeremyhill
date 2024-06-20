@@ -6,6 +6,7 @@ import { Category } from '@/types/Category'
 import DateTag from '@/components/dateTag'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { BlogPost } from '@/types/BlogPost'
 
 export async function generateStaticParams() {
   const paths = await client.fetch(
@@ -15,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const post = await getPost(params?.slug)
+  const post:BlogPost = await getPost(params?.slug)
   if (!post) notFound()
   const { title, category, subCategories, mainImage, body, date } = post
   return (

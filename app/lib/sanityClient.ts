@@ -2,6 +2,7 @@
 import { createClient } from '@sanity/client'
 import { BlogListFilter } from '@/types/BlogListProps'
 import groq from 'groq'
+import { BlogPost } from '@/types/BlogPost'
 
 export const client = createClient({
   projectId: process.env.SANITY_API_PROJECT_ID,
@@ -12,7 +13,7 @@ export const client = createClient({
 })
 
 export const getPost = async (slug: string) => {
-  const post = await client.fetch(
+  const post = await client.fetch<BlogPost>(
     groq`
     *[_type == "post" && slug.current == $slug][0]
     {
@@ -24,6 +25,9 @@ export const getPost = async (slug: string) => {
     "date": publishedAt
     }`,
     { slug },
+    {
+      next: { revalidate: 3600 },
+    }
   )
 
   return post

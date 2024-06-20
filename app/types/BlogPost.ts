@@ -1,3 +1,4 @@
+import { Category } from './Category'
 import { BlockContent, SanityImageCrop, SanityImageHotspot, Slug, internalGroqTypeReferenceTo } from './SanityTypes'
 
 export interface BlogPost {
@@ -21,23 +22,9 @@ export interface BlogPost {
     caption?: string
     _type: 'image'
   }
-  category: {
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    title: string
-    name: Slug
-    [internalGroqTypeReferenceTo]?: 'category'
-  }
-  subCategories: Array<{
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    _key: string
-    title: string
-    name: Slug
-    [internalGroqTypeReferenceTo]?: 'category'
-  }>
+  category: Category
+  subCategories: Array<Category>
+  date?: string
   publishedAt?: string
   body?: BlockContent
   blurb?: string
