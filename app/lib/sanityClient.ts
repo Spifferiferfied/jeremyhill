@@ -21,7 +21,7 @@ export const getPost = async (slug: string) => {
     "subCategories": subCategories[]->,
     mainImage,
     body,
-    "date": _createdAt
+    "date": publishedAt
     }`,
     { slug },
   )

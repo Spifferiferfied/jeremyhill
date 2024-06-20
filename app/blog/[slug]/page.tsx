@@ -33,7 +33,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           { date && (
             <DateTag
               className="text-sm float-right mb-4 md:mb-0"
-              dateTime={date}
+              dateTime={ date }
               formatString="E MMM do, yyyy"
             />
           ) }
