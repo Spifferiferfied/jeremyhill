@@ -5,19 +5,18 @@ import Tag from '@/components/blog/tag'
 import { Category } from '@/types/Category'
 import DateTag from '@/components/dateTag'
 import Image from 'next/image'
-import { Key } from 'react'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const paths = await client.fetch(
     `*[_type == "post" && defined(slug.current)][].slug.current`,
   )
-  return paths.map((slug: String) => ({ params: { slug } }))
+  return paths.map((slug: string) => ({ params: { slug } }))
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const post = await getPost(params?.slug)
-  post || notFound()
+  if(!post) notFound()
   const { title, category, subCategories, mainImage, body, date } = post
   return (
     <main className="container mx-auto w-full">
@@ -28,16 +27,14 @@ export default async function Post({ params }: { params: { slug: string } }) {
             { category && ( <Tag title={ category.title } name={ category.name?.current } className="me-3 md:mb-0"/> )
             }
             { subCategories &&
-                 subCategories.map(( category: Category ) => {
-                  return <Tag title={ category.title } name={ category.name?.current } key={ category.name?.current } className="me-3 md:mb-0" />
-                })
+                 subCategories.map(( subCategory: Category ) => <Tag title={ subCategory.title } name={ subCategory.name?.current } key={ subCategory.name?.current } className="me-3 md:mb-0" />)
             }
           </div>
           { date && (
             <DateTag
               className="text-sm float-right mb-4 md:mb-0"
               dateTime={date}
-              formatString={'E MMM do, yyyy'}
+              formatString="E MMM do, yyyy"
             />
           ) }
         </div>

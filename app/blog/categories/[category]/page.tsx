@@ -5,7 +5,7 @@ export async function generateStaticParams() {
   const paths = await client.fetch(
     `*[_type == "category" && defined(name.current)][].name.current`,
   )
-  return paths.map((category: String) => ({ params: { category } }))
+  return paths.map((category: string) => ({ params: { category } }))
 }
 
 export default async function ByCategory({ params }: { params: { category: string } }) {

@@ -7,12 +7,12 @@ export async function generateStaticParams() {
   const paths = await client.fetch(
     `*[_type == "page" && defined(slug.current)][].slug.current`,
   )
-  return paths.map((slug: String) => ({ params: { page: slug } }))
+  return paths.map((slug: string) => ({ params: { page: slug } }))
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getPage(params?.slug)
-  page || notFound()
+  if(!page) notFound()
   const { title, body } = page
   return (
     <main className="container mx-auto w-full">

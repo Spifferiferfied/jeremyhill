@@ -1,7 +1,6 @@
 // client.ts
 import { createClient } from '@sanity/client'
 import { BlogListFilter } from '@/types/BlogListProps'
-import { BlogPost } from '@/types/BlogPost'
 import groq from 'groq'
 
 export const client = createClient({
@@ -12,7 +11,7 @@ export const client = createClient({
   // token: process.env.SANITY_API_WRITE_TOKEN // Only if you want to update content with the client
 })
 
-export const getPost = async (slug: String) => {
+export const getPost = async (slug: string) => {
   const post = await client.fetch(
     groq`
     *[_type == "post" && slug.current == $slug][0]
@@ -30,7 +29,7 @@ export const getPost = async (slug: String) => {
   return post
 }
 
-export const getPage = async (slug: String) => {
+export const getPage = async (slug: string) => {
   const page = await client.fetch(
     groq`
     *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }`,
@@ -42,7 +41,7 @@ export const getPage = async (slug: String) => {
 
   return page
 }
-export const getCategory = async (name: String) => {
+export const getCategory = async (name: string) => {
   const page = await client.fetch(
     groq`
     *[_type == "category" && name.current == $name][0]`,

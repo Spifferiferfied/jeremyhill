@@ -6,7 +6,7 @@ export interface Category {
   description: string,
 }
 export interface TagProps {
-  title: String,
-  name: String,
-  className?: String,
+  title: string,
+  name: string,
+  className?: string,
 }

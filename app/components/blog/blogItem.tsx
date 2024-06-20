@@ -1,11 +1,10 @@
 import Image from 'next/image'
 import { BlogItemProps } from '@/types/BlogItemProps'
-import { PortableText } from '@portabletext/react'
 import Tag from '@/components/blog/tag'
-import { urlFor, ptComponents } from '@/lib/portableTextUtils'
+import { urlFor } from '@/lib/portableTextUtils'
 import Link from 'next/link'
 
-export function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
+export default function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
   return (
     <li
       className={ `w-full relative over p-4 mb-8 flex flex-col md:flex-row drop-shadow-md blog-item-${ blogPost.category.name.current } ${ side === 'left' ? '' : 'md:justify-end' }` }

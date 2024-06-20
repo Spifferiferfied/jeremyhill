@@ -2,9 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
 
 export default function Header() {
   const [ mobileNavClass, setMobileNavClass ] = useState('close')
@@ -15,11 +14,15 @@ export default function Header() {
 
   return (
     <header
-      className={`flex flex-col items-center justify-between pt-7 border-b border-b-black font-heading container mx-auto h-20 md:h-auto`}
+      className="flex flex-col items-center justify-between pt-7 border-b border-b-black font-heading container mx-auto h-20 md:h-auto"
     >
       <nav className="w-full">
-        <button className="md:hidden absolute top-4 left-4 z-30 bg-white" onClick={() => {
-          mobileNavClass === 'open' ?  setMobileNavClass('close') : setMobileNavClass('open')
+        <button type="button" className="md:hidden absolute top-4 left-4 z-30 bg-white" onClick={() => {
+          if( mobileNavClass === 'open' ) {
+            setMobileNavClass('close')
+          } else {
+            setMobileNavClass('open')
+          }
           return false
         }}>
           <Image src="/images/icons/hamburger-menu.svg" height={ 38 } width={ 43 } alt="Menu" />

@@ -1,4 +1,5 @@
 import { BlockContent, SanityImageCrop, SanityImageHotspot, Slug, internalGroqTypeReferenceTo } from './SanityTypes'
+
 export interface BlogPost {
   _id: string
   _type: 'post'

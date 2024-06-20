@@ -1,3 +1,18 @@
 {
-  "extends": ["next/core-web-vitals", "prettier", "plugin:jsx-a11y/recommended"]
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@next/next/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "import/extensions": 0,
+    "react/jsx-filename-extension": [ 1, { "extensions": [ ".tsx" ] } ],
+    "no-underscore-dangle": [ 0, { "allow": [ "_ref"] } ]
+  }
 }
