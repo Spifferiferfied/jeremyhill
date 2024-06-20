@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getPage(params?.slug)
-  if(!page) notFound()
+  if (!page) notFound()
   const { title, body } = page
   return (
     <main className="container mx-auto w-full">
@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <h1 className="text-center mt-6 mb-4 font-bold text-4xl font-heading">
           {title}
         </h1>
-        {body && <PortableText value={body} components={ptComponents} />}
+        { body && <PortableText value={ body } components={ ptComponents } /> }
       </div>
     </main>
   )

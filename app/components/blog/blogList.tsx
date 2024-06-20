@@ -9,14 +9,14 @@ export default async function BlogList({ count = null, filter = {} as BlogListFi
   return (
     <div className="w-full flex flex-col justify-items-start content-center flex-wrap">
       <ul>
-        {posts.length > 0 &&
-          posts.map((post: BlogPost, index: number) => (
-              <BlogItem
-                blogPost={post as BlogPost}
-                side={index % 2 === 0 ? 'left' : 'right'}
-                key={ post?.slug?.current }
-              />
-            ))}
+        {posts.length > 0
+        && posts.map((post: BlogPost, index: number) => (
+          <BlogItem
+            blogPost={ post as BlogPost }
+            side={ index % 2 === 0 ? 'left' : 'right' }
+            key={ post?.slug?.current }
+          />
+        ))}
       </ul>
     </div>
   )

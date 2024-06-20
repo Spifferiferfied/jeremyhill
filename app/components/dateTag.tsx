@@ -9,7 +9,7 @@ export default function DateTag({
   const date = new Date(dateTime)
   const formattedDate = format(date, formatString)
   return (
-    <time dateTime={dateTime} className={className}>
+    <time dateTime={ dateTime } className={ className }>
       {formattedDate}
     </time>
   )

@@ -25,8 +25,8 @@ export interface BlogPost {
     _ref: string
     _type: 'reference'
     _weak?: boolean
-    title: string,
-    name: Slug,
+    title: string
+    name: Slug
     [internalGroqTypeReferenceTo]?: 'category'
   }
   subCategories: Array<{
@@ -34,8 +34,8 @@ export interface BlogPost {
     _type: 'reference'
     _weak?: boolean
     _key: string
-    title: string,
-    name: Slug,
+    title: string
+    name: Slug
     [internalGroqTypeReferenceTo]?: 'category'
   }>
   publishedAt?: string

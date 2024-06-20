@@ -15,21 +15,41 @@ export default function Hero() {
       <div className="-mt-32 md:mt-0 text-center w-full md:w-1/2 flex flex-col justify-center z-10 px-6">
         <div className="hero-text text-3xl bg-white bg-opacity-80 py-2 font-heading">
           <h1 className="text-6xl bold font-bold uppercase">Jeremy Hill</h1>
-          is <br />
-          an{' '}
+          is
+          {' '}
+          <br />
+          an
+          {' '}
           <Link href="https://www.linkedin.com/in/jhill83/">Engineering Manager</Link>
-          , <br />a <Link href="https://github.com/Spifferiferfied">UI Engineer</Link>
-          , <br />
-          an{' '}
+          ,
+          {' '}
+          <br />
+          a
+          {' '}
+          <Link href="https://github.com/Spifferiferfied">UI Engineer</Link>
+          ,
+          {' '}
+          <br />
+          an
+          {' '}
           <Link href="https://www.instagram.com/jeremyhill83/">
             Amateur Photographer
           </Link>
-          , <br />
-          an{' '}
+          ,
+          {' '}
+          <br />
+          an
+          {' '}
           <Link href="https://morty.app/@Spifferiferfied">
             Escape Room Aficionado
           </Link>
-          , <br />a <Link href="/collections">Collector of Collections</Link>.
+          ,
+          {' '}
+          <br />
+          a
+          {' '}
+          <Link href="/collections">Collector of Collections</Link>
+          .
         </div>
       </div>
     </div>

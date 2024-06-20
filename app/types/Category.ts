@@ -1,12 +1,12 @@
 export interface Category {
-  title: string,
+  title: string
   name: {
     current: string
-  },
-  description: string,
+  }
+  description: string
 }
 export interface TagProps {
-  title: string,
-  name: string,
-  className?: string,
+  title: string
+  name: string
+  className?: string
 }

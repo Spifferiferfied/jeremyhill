@@ -9,13 +9,15 @@ export async function generateStaticParams() {
 }
 
 export default async function ByCategory({ params }: { params: { category: string } }) {
-  const category = await getCategory( params.category )
+  const category = await getCategory(params.category)
   return (
     <main className="container mx-auto w-full">
       <h1 className="text-center mt-6 mb-6 font-bold text-4xl font-heading">
-        Category: { category.title }
+        Category:
+        {' '}
+        { category.title }
       </h1>
-      <BlogList count={4} filter={ { category: params.category } }/>
+      <BlogList count={ 4 } filter={ { category: params.category } } />
     </main>
   )
 }

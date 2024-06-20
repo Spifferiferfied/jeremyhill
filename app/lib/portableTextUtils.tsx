@@ -15,9 +15,9 @@ const imageComponent = ({ value }: { value: SanityInlineImage }) => {
     return null
   }
   return (
-    <div className={ `${ value?.float ? `float-${ value.float }` : '' }` } >
+    <div className={ `${ value?.float ? `float-${ value.float }` : '' }` }>
       <Image
-        src={ urlFor(value).width( value?.width || 1500 ).fit('max').auto('format').url() }
+        src={ urlFor(value).width(value?.width || 1500).fit('max').auto('format').url() }
         alt={ value.alt || ' ' }
         width={ value?.width || 1500 }
         height={ value?.width || 1500 }

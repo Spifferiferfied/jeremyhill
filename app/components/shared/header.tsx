@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 export default function Header() {
-  const [ mobileNavClass, setMobileNavClass ] = useState('close')
+  const [mobileNavClass, setMobileNavClass] = useState('close')
   const pathname = usePathname()
   useEffect(() => {
     setMobileNavClass('')
@@ -17,14 +17,19 @@ export default function Header() {
       className="flex flex-col items-center justify-between pt-7 border-b border-b-black font-heading container mx-auto h-20 md:h-auto"
     >
       <nav className="w-full">
-        <button type="button" className="md:hidden absolute top-4 left-4 z-30 bg-white" onClick={() => {
-          if( mobileNavClass === 'open' ) {
-            setMobileNavClass('close')
-          } else {
-            setMobileNavClass('open')
-          }
-          return false
-        }}>
+        <button
+          type="button"
+          className="md:hidden absolute top-4 left-4 z-30 bg-white"
+          onClick={ () => {
+            if (mobileNavClass === 'open') {
+              setMobileNavClass('close')
+            }
+            else {
+              setMobileNavClass('open')
+            }
+            return false
+          } }
+        >
           <Image src="/images/icons/hamburger-menu.svg" height={ 38 } width={ 43 } alt="Menu" />
         </button>
         <ul className={ `${ mobileNavClass } absolute left-0 top-20 right-0 bg-white mobile-header z-10` }>
@@ -44,7 +49,7 @@ export default function Header() {
         <ul className="uppercase font-semibold flex flex-row justify-center content-center md:justify-between z-20 relative">
           <li className="mx-4 hidden md:block">
             <Link
-              className={pathname === '/about' ? 'active' : ''}
+              className={ pathname === '/about' ? 'active' : '' }
               href="/about"
             >
               About
@@ -52,7 +57,7 @@ export default function Header() {
           </li>
           <li className="mx-4 hidden md:block">
             <Link
-              className={pathname === '/blog' ? 'active' : ''}
+              className={ pathname === '/blog' ? 'active' : '' }
               href="/blog"
             >
               Musings
@@ -63,10 +68,11 @@ export default function Header() {
               <Image
                 className="-mb-5 bg-white px-3"
                 src="/images/logo.svg"
-                height={90}
-                width={77}
+                height={ 90 }
+                width={ 77 }
                 alt="Jeremy Hill logo"
-              />{' '}
+              />
+              {' '}
             </Link>
           </li>
           <li className="mx-4 hidden md:block">

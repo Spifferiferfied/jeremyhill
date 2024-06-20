@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const post = await getPost(params?.slug)
-  if(!post) notFound()
+  if (!post) notFound()
   const { title, category, subCategories, mainImage, body, date } = post
   return (
     <main className="container mx-auto w-full">
@@ -24,11 +24,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
         <h1 className="font-bold text-4xl font-heading mb-4 mt-16 px-4 md:px-0">{title}</h1>
         <div className="md:flex md:flex-row flex-wrap justify-between items-middle mb-2 px-4 md:px-0">
           <div className="category flex flex-row justify-between items-end">
-            { category && ( <Tag title={ category.title } name={ category.name?.current } className="me-3 md:mb-0"/> )
-            }
-            { subCategories &&
-                 subCategories.map(( subCategory: Category ) => <Tag title={ subCategory.title } name={ subCategory.name?.current } key={ subCategory.name?.current } className="me-3 md:mb-0" />)
-            }
+            { category && (<Tag title={ category.title } name={ category.name?.current } className="me-3 md:mb-0" />)}
+            { subCategories
+            && subCategories.map((subCategory: Category) => <Tag title={ subCategory.title } name={ subCategory.name?.current } key={ subCategory.name?.current } className="me-3 md:mb-0" />)}
           </div>
           { date && (
             <DateTag
@@ -41,16 +39,16 @@ export default async function Post({ params }: { params: { slug: string } }) {
         {mainImage && (
           <div>
             <Image
-              src={urlFor(mainImage).width(1500).url()}
+              src={ urlFor(mainImage).width(1500).url() }
               className="mb-4 w-full"
-              height={1000}
-              width={1000}
-              alt={mainImage.alt}
+              height={ 1000 }
+              width={ 1000 }
+              alt={ mainImage.alt }
             />
           </div>
         )}
         <div className="px-4 md:px-0">
-          {body && <PortableText value={body} components={ptComponents} />}
+          {body && <PortableText value={ body } components={ ptComponents } />}
         </div>
       </article>
     </main>

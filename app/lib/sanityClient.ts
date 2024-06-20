@@ -35,7 +35,7 @@ export const getPage = async (slug: string) => {
     *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }`,
     { slug },
     {
-      next: { revalidate: 3600 }
+      next: { revalidate: 3600 },
     },
   )
 
@@ -55,12 +55,12 @@ export const getPosts = async (count: number | null, filter = { } as BlogListFil
   let filterString = ''
   let params = { }
   let countString = ''
-  if( filter?.category ) {
+  if (filter?.category) {
     filterString += groq`&& ($category == category->name.current || $category in subCategories[]->name.current)`
     params = { category: filter?.category }
   }
-  if(count) {
-    countString = `[${filter?.page ? filter.page * count : 0}..${filter?.page ? (filter.page + 1) * count : count - 1}]`
+  if (count) {
+    countString = `[${ filter?.page ? filter.page * count : 0 }..${ filter?.page ? (filter.page + 1) * count : count - 1 }]`
   }
   const query = groq`*[_type == "post"
     ${ filterString }]
@@ -74,7 +74,7 @@ export const getPosts = async (count: number | null, filter = { } as BlogListFil
       mainImage
     }`
 
-  const posts = await client.fetch( query, params, )
+  const posts = await client.fetch(query, params)
 
   return posts
 }
