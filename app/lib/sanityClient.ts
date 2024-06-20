@@ -26,7 +26,7 @@ export const getPost = async (slug: string) => {
     }`,
     { slug },
     {
-      next: { revalidate: 3600 },
+      next: { tags: ['post'] },
     },
   )
 
@@ -39,7 +39,7 @@ export const getPage = async (slug: string) => {
     *[_type == "page" && slug.current == $slug][0]{ title, body, "date": _createdAt }`,
     { slug },
     {
-      next: { revalidate: 3600 },
+      next: { tags: ['page'] },
     },
   )
 
@@ -50,6 +50,9 @@ export const getCategory = async (name: string) => {
     groq`
     *[_type == "category" && name.current == $name][0]`,
     { name },
+    {
+      next: { tags: ['post', 'category'] },
+    },
   )
 
   return page
@@ -78,7 +81,13 @@ export const getPosts = async (count: number | null, filter = { } as BlogListFil
       mainImage
     }`
 
-  const posts = await client.fetch(query, params)
+  const posts = await client.fetch(
+    query,
+    params,
+    {
+      next: { tags: ['post'] },
+    },
+  )
 
   return posts
 }
