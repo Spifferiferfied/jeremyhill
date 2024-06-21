@@ -6,7 +6,7 @@ export default function Blog() {
       <h1 className="text-center mt-6 mb-6 font-bold text-4xl font-heading">
         Musings
       </h1>
-      <BlogList />
+      <BlogList count={ 4 } />
     </main>
   )
 }
