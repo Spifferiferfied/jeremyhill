@@ -8,7 +8,7 @@ export default async function BlogList({ count = null, filter = {} as BlogListFi
 
   return (
     <div className="w-full flex flex-col justify-items-start content-center flex-wrap">
-      <ul>
+      <ul className="w-full">
         {posts.length > 0
         && posts.map((post: BlogPost, index: number) => (
           <BlogItem
