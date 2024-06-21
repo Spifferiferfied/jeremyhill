@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { BlogItemProps } from '@/types/BlogItemProps'
-import Tag from '@/components/blog/tag'
 import { urlFor } from '@/lib/portableTextUtils'
 import Link from 'next/link'
 
