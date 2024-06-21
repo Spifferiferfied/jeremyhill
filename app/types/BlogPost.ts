@@ -27,5 +27,5 @@ export interface BlogPost {
   date?: string
   publishedAt?: string
   body?: BlockContent
-  blurb?: string
+  blurb?: BlockContent
 }
