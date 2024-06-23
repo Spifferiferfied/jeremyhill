@@ -64,4 +64,5 @@ export type SanityCodeBlock = {
   language: string
   code: string
   highlightedLines: Array<number>
+  filename?: string
 }

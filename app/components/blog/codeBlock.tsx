@@ -15,11 +15,14 @@ const copyToClipboard: MouseEventHandler = (e: React.MouseEvent<HTMLAnchorElemen
 
 export default function CodeBlock({ value }: { value: SanityCodeBlock }) {
   return (
-    <div className="w-full block relative">
-      <Refractor language={ value.language } value={ value.code } markers={ value.highlightedLines } />
-      <button type="button" className="absolute right-4 top-4" onClick={ copyToClipboard }>
-        <Image src="/images/icons/copy.svg" width="0" height="0" sizes="100vw" className="w-[24px] h-auto" alt="copy" />
-      </button>
-    </div>
+    <>
+      { value.filename && (<h3 className="font-semibold text-lg font-mono mt-8">{ value.filename }</h3>) }
+      <div className="w-full block relative">
+        <Refractor language={ value.language } value={ value.code } markers={ value.highlightedLines } />
+        <button type="button" className="absolute right-4 top-4" onClick={ copyToClipboard }>
+          <Image src="/images/icons/copy.svg" width="0" height="0" sizes="100vw" className="w-[24px] h-auto" alt="copy" />
+        </button>
+      </div>
+    </>
   )
 }
