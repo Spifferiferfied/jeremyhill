@@ -3,6 +3,10 @@ import Image from 'next/image'
 import { client } from '@/lib/sanityClient'
 import { PortableTextComponents } from '@portabletext/react'
 import { SanityInlineImage } from '@/types/SanityInlineImage'
+import InlineCode from '@/components/blog/inlineCode'
+import { ReactNode } from 'react'
+import CodeBlock from '@/components/blog/codeBlock'
+import { SanityCodeBlock } from '@/types/SanityTypes'
 
 const builder = imageUrlBuilder(client)
 
@@ -27,6 +31,16 @@ const imageComponent = ({ value }: { value: SanityInlineImage }) => {
     </div>
   )
 }
+const inlineCodeComponent = ({ children }: { children: ReactNode }) => (
+  <InlineCode>
+    <span className="contents">
+      { children }
+    </span>
+  </InlineCode>
+)
+const codeBlockComponent = ({ value }: { value: SanityCodeBlock }) => (
+  <CodeBlock value={ value } />
+)
 
 export const ptComponents: PortableTextComponents = {
   block: {
@@ -34,7 +48,11 @@ export const ptComponents: PortableTextComponents = {
     h2: ({ children }) => <h2 className="mb-4 font-heading text-3xl">{ children }</h2>,
     h3: ({ children }) => <h3 className="mb-4 font-heading text-2xl">{ children }</h3>,
   },
+  marks: {
+    code: inlineCodeComponent,
+  },
   types: {
     image: imageComponent,
+    codeBlock: codeBlockComponent as never,
   },
 }

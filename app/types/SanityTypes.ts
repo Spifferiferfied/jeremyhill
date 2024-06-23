@@ -59,3 +59,9 @@ export type Slug = {
   current: string
   source?: string
 }
+
+export type SanityCodeBlock = {
+  language: string
+  code: string
+  highlightedLines: Array<number>
+}
