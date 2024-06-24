@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { client } from '@/lib/sanityClient'
 import { PortableTextComponents } from '@portabletext/react'
 import { SanityInlineImage } from '@/types/SanityInlineImage'
-import InlineCode from '@/components/blog/inlineCode'
 import { ReactNode } from 'react'
 import CodeBlock from '@/components/blog/codeBlock'
 import { SanityCodeBlock } from '@/types/SanityTypes'
@@ -32,11 +31,9 @@ const imageComponent = ({ value }: { value: SanityInlineImage }) => {
   )
 }
 const inlineCodeComponent = ({ children }: { children: ReactNode }) => (
-  <InlineCode>
-    <span className="contents">
-      { children }
-    </span>
-  </InlineCode>
+  <code className="bg-grey-900 text-white relative rounded p-1">
+    { children }
+  </code>
 )
 const codeBlockComponent = ({ value }: { value: SanityCodeBlock }) => (
   <CodeBlock value={ value } />
