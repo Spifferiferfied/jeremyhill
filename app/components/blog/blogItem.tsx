@@ -23,7 +23,7 @@ export default function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
         className="md:object-cover object-contain md:hidden absolute top-0 left-0"
         alt={ blogPost.mainImage.alt }
       />
-      <article className="md:w-2/5 2xl:w-1/4 xl:w-1/3 relative text-white p-4 md:-mt-8 mt-44 drop-shadow-2xl">
+      <article className="md:w-2/5 2xl:w-1/4 xl:w-1/3 lg:min-h-[400px] min-h-[300px] relative text-white p-4 md:-mt-8 mt-44 drop-shadow-2xl flex flex-col justify-start items-start">
         <Tag title={ blogPost.category.title } name={ blogPost.category.name.current } />
         <h2 className="font-heading text-3xl font-bold mb-2">
           <Link
@@ -33,11 +33,11 @@ export default function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
             { blogPost.title }
           </Link>
         </h2>
-        <div className="leading-6 mb-4">
+        <div className="leading-6 mb-4 flex-grow">
           { blogPost.blurb && <PortableText value={ blogPost.blurb } components={ ptComponents } /> }
         </div>
         <Link
-          className="text-sm inline-block px-2 py-1 read-more float-right hover:underline no-underline text-white"
+          className="text-sm inline-block px-2 py-1 read-more float-right hover:underline no-underline text-white self-end place-self-end"
           href={ `/blog/${ blogPost.slug.current }` }
         >
           Read More...
