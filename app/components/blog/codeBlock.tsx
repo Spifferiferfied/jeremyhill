@@ -5,8 +5,12 @@ import Image from 'next/image'
 import { MouseEventHandler } from 'react'
 import { Refractor, registerLanguage } from 'react-refractor'
 import javascript from 'refractor/lang/javascript'
+import typescript from 'refractor/lang/typescript'
+import sh from 'refractor/lang/shell-session'
 
 registerLanguage(javascript)
+registerLanguage(typescript)
+registerLanguage(sh)
 
 const copyToClipboard: MouseEventHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
   const content: HTMLElement = (e.target as HTMLElement)?.closest('div')?.querySelector('code') as HTMLElement

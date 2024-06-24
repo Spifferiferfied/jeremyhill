@@ -176,7 +176,7 @@ a {
 @mixin tag-dark escape-rooms, yellow {}
 
 /* PrismJS 1.29.0
-https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+typescript */
+https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+bash+shell-session+typescript */
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -217,7 +217,7 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
 
  :not(pre) > code[class*="language-"],
  pre[class*="language-"] {
-   background: var(--color-grey-900);
+  background: var(--color-grey-900);
  }
 
  /* Inline code */
@@ -300,4 +300,3 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
  .token.entity {
    cursor: help;
  }
-
