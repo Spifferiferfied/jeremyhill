@@ -47,6 +47,7 @@ export const ptComponents: PortableTextComponents = {
     normal: ({ children }) => <p className="mb-4">{ children }</p>,
     h2: ({ children }) => <h2 className="mb-4 font-heading text-3xl">{ children }</h2>,
     h3: ({ children }) => <h3 className="mb-4 font-heading text-2xl">{ children }</h3>,
+    h4: ({ children }) => <h4 className="mb-4 font-heading text-xl">{ children }</h4>,
   },
   marks: {
     code: inlineCodeComponent,
