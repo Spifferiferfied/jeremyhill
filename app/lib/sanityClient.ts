@@ -3,10 +3,11 @@ import { createClient } from '@sanity/client'
 import { BlogListFilter } from '@/types/BlogListProps'
 import groq from 'groq'
 import { BlogPost } from '@/types/BlogPost'
+import { SanityGallery } from '@/types/SanityGallery'
 
 export const client = createClient({
-  projectId: process.env.SANITY_API_PROJECT_ID,
-  dataset: process.env.SANITY_API_DATASET || 'development',
+  projectId: process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_API_DATASET || 'development',
   useCdn: true, // set to `false` to bypass the edge cache
   apiVersion: '2024-06-07', // use current date (YYYY-MM-DD) to target the latest API version
   // token: process.env.SANITY_API_WRITE_TOKEN // Only if you want to update content with the client
@@ -27,6 +28,27 @@ export const getPost = async (slug: string) => {
     { slug },
     {
       next: { tags: ['post'] },
+    },
+  )
+
+  return post
+}
+
+export const getGallery = async (slug: string) => {
+  const post = await client.fetch<SanityGallery>(
+    groq`
+    *[_type == "gallery" && slug.current == $slug][0]
+    {
+    title,
+    "category": category->,
+    "subCategories": subCategories[]->,
+    'galleryImages': images[],
+    description,
+    "date": publishedAt
+    }`,
+    { slug },
+    {
+      next: { tags: ['gallery'] },
     },
   )
 

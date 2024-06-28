@@ -1,0 +1,61 @@
+
+@define-mixin tag $name, $color,  {
+  .tag-$(name) {
+    background-color: var(--color-$(color)-400);
+    color: var(--color-white);
+  }
+  .blog-item-$(name) {
+    article {
+      background-color: var(--color-$(color)-600);
+      color: var(--color-white);
+      a {
+        color: var(--color-white);
+      }
+      .read-more {
+        background-color: var(--color-$(color)-400);
+      }
+    }
+  }
+}
+@define-mixin tag-dark $name, $color,  {
+  .tag-$(name) {
+    background-color: var(--color-$(color)-400);
+    color: var(--color-black);
+  }
+  .blog-item-$(name) {
+    article {
+      background-color: var(--color-$(color)-600);
+      color: var(--color-black);
+      a {
+        color: var(--color-black);
+      }
+      .read-more {
+        background-color: var(--color-$(color)-400);
+      }
+    }
+  }
+}
+
+[class*='tag-'] {
+  background-color: var(--color-grey-400);
+  color: var(--color-black);
+}
+[class*='blog-item-'] {
+  article {
+    background-color: var(--color-grey-600);
+    color: var(--color-black);
+    a {
+      color: var(--color-black);
+    }
+    .read-more {
+      background-color: var(--color-grey-400);
+    }
+  }
+}
+@mixin tag travel, red {}
+@mixin tag collections, blue {}
+@mixin tag photography, plum {}
+@mixin tag-dark development, teal {}
+@mixin tag-dark games, gold {}
+@mixin tag-dark personal, orange {}
+@mixin tag-dark escape-rooms, yellow {}

@@ -1,0 +1,63 @@
+.image-gallery {
+  .thumb {
+    --border-width: 3px;
+    --border-offset: 16px;
+    --_d: calc(1em);
+    --_g: calc(100% - 2*(var(--_d) + var(--border-width)));
+    --_m:
+      conic-gradient(from 90deg at var(--_d) var(--_d),#0000 25%,#000 0)
+      0 0/calc(100% - var(--_d)) calc(100% - var(--_d)),
+      linear-gradient(#000 0 0) 50%/var(--_g) var(--_g) no-repeat;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    font-size: 0;
+    cursor: pointer;
+    transition: .35s;
+    &:hover {
+      font-size: var(--border-offset);
+    }
+  }
+  dialog::backdrop {
+    @apply bg-opacity-50 bg-black;
+  }
+}
+
+dialog {
+  .close-btn {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    width: 2em;
+    height: 2em;
+    text-indent: -10000px;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: calc((1em - .005em) / 2);
+      left: 0;
+      right: 0;
+      height: .15em;
+      background: var(--color-white);
+      border-radius: .15em;
+      opacity: .5;
+      transition: .2s;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      &:before,
+      &:after {
+        opacity: .8;
+      }
+    }
+  }
+}

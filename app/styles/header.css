@@ -1,0 +1,37 @@
+nav a {
+  color: var(--foreground-rgb);
+  @apply no-underline;
+  &:hover,
+  &.active {
+    @apply text-blue-400 underline cursor-pointer;
+  }
+}
+
+.mobile-header {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0s;
+  z-index: -1;
+  &.open {
+    z-index: 20;
+    max-height: 430px;
+    transition: all .500s;
+  }
+  &.close {
+    transition: all 0.500s;
+  }
+
+  li::after {
+    content: '';
+    width: calc(100% - 2em);
+    display: block;
+    border-bottom: 1px solid var(--color-black);
+    margin: auto;
+  }
+
+  li:last-child {
+    &::after {
+      border-bottom: 0;
+    }
+  }
+}

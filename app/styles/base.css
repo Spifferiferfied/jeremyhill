@@ -1,0 +1,71 @@
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --hero-height: 110vw;
+  --hero-width: 110vw;
+}
+@screen md {
+  :root {
+    --hero-height: calc(theme('screens.md') / 2);
+    --hero-width: 100%;
+  }
+  .hero {
+    h1 {
+      font-size: calc((theme('screens.md') / 2) /6);
+    }
+    .hero-text {
+      font-size: calc((theme('screens.md') / 2) /12);
+    }
+  }
+}
+
+@screen lg {
+  :root {
+    --hero-height: calc(theme('screens.lg') / 2);
+  }
+  body {
+    font-size: 1.125rem;
+  }
+  .hero {
+    h1 {
+      font-size: calc((theme('screens.lg') / 2) /6);
+    }
+    .hero-text {
+      font-size: calc((theme('screens.lg') / 2) /12);
+      line-height: 3.2rem;
+    }
+  }
+}
+
+@screen xl {
+  :root {
+    --hero-height: calc(theme('screens.xl') / 2);
+  }
+  .hero {
+    h1 {
+      font-size: calc((theme('screens.xl') / 2) /6);
+    }
+    .hero-text {
+      font-size: calc((theme('screens.xl') / 2) /12);
+      line-height: 3.5rem;
+    }
+  }
+}
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+a {
+  @apply text-blue-400 underline;
+}
+
+.btn {
+  @apply no-underline px-4 py-2 bg-red-600 text-white;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
