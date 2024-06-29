@@ -6,8 +6,8 @@ import { BlogPost } from '@/types/BlogPost'
 import { SanityGallery } from '@/types/SanityGallery'
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_API_DATASET || 'development',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'development',
   useCdn: true, // set to `false` to bypass the edge cache
   apiVersion: '2024-06-07', // use current date (YYYY-MM-DD) to target the latest API version
   // token: process.env.SANITY_API_WRITE_TOKEN // Only if you want to update content with the client
