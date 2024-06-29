@@ -37,6 +37,9 @@ export default async function Gallery({ params }: { params: { slug: string } }) 
           />
         ) }
       </div>
+      <div className="px-4 md:px-0">
+        {description && <PortableText value={ description } components={ ptComponents } />}
+      </div>
       <div className="image-gallery flex flex-row flex-wrap justify-stretch items-center mx-auto w-full px-4 md:px-0">
         { galleryImages.length > 0
         && galleryImages.map((image: SanityGalleryImage) => (
@@ -44,9 +47,6 @@ export default async function Gallery({ params }: { params: { slug: string } }) 
             <GalleryImage image={ image } />
           </Suspense>
         ))}
-      </div>
-      <div className="px-4 md:px-0">
-        {description && <PortableText value={ description } components={ ptComponents } />}
       </div>
     </main>
   )
