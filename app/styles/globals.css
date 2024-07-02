@@ -3,6 +3,7 @@
 @import "header";
 @import "tags";
 @import "gallery";
+@import "prism";
 
  .hero-image {
   height: calc(100vh - 77px);
