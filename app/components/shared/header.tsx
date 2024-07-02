@@ -30,10 +30,10 @@ export default function Header() {
             </Link>
           </li>
           <li className="mx-4 hidden md:block">
-            <Link className="p-4 block" href="https://www.instagram.com/jeremyhill83/">Photography</Link>
+            <Link href="https://www.instagram.com/jeremyhill83/">Photography</Link>
           </li>
           <li className="mx-4 hidden md:block">
-            <Link className="p-4 block" href="https://github.com/Spifferiferfied">Code</Link>
+            <Link href="https://github.com/Spifferiferfied">Code</Link>
           </li>
         </ul>
       </nav>

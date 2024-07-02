@@ -31,16 +31,16 @@ export default function MobileNav() {
       </button>
       <ul className={ `${ mobileNavClass } absolute left-0 top-20 right-0 bg-white mobile-header z-10` }>
         <li>
-          <HeaderLink href="/about">About</HeaderLink>
+          <HeaderLink className="p-4 block" href="/about">About</HeaderLink>
         </li>
         <li>
-          <HeaderLink href="/blog">Musings</HeaderLink>
+          <HeaderLink className="p-4 block" href="/blog">Musings</HeaderLink>
         </li>
         <li>
-          <HeaderLink href="https://www.instagram.com/jeremyhill83/">Photography</HeaderLink>
+          <HeaderLink className="p-4 block" href="https://www.instagram.com/jeremyhill83/">Photography</HeaderLink>
         </li>
         <li className="">
-          <HeaderLink href="https://github.com/Spifferiferfied">Code</HeaderLink>
+          <HeaderLink className="p-4 block" href="https://github.com/Spifferiferfied">Code</HeaderLink>
         </li>
       </ul>
     </>

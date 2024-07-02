@@ -4,11 +4,11 @@ import { HeaderLinkProps } from '@/types/HeaderLinkProps'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export default function HeaderLink({ href, children }: HeaderLinkProps) {
+export default function HeaderLink({ href, children, className }: HeaderLinkProps) {
   const pathname = usePathname()
 
   return (
-    <Link className={ `p-4 block ${ pathname === href ? 'active' : '' }` } href={ href }>
+    <Link className={ `${ className } ${ pathname === href ? 'active' : '' }` } href={ href }>
       { children }
     </Link>
   )
