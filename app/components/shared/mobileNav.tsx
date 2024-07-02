@@ -39,7 +39,7 @@ export default function MobileNav() {
         <li>
           <HeaderLink className="p-4 block" href="https://www.instagram.com/jeremyhill83/">Photography</HeaderLink>
         </li>
-        <li className="">
+        <li>
           <HeaderLink className="p-4 block" href="https://github.com/Spifferiferfied">Code</HeaderLink>
         </li>
       </ul>
