@@ -2,13 +2,15 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import HeaderLink from './headerLink'
 
 export default function MobileNav() {
   const [mobileNavClass, setMobileNavClass] = useState('close')
+  const pathname = usePathname()
   useEffect(() => {
     setMobileNavClass('')
-  }, [mobileNavClass])
+  }, [pathname])
 
   return (
     <>
