@@ -22,7 +22,10 @@ export const getPost = async (slug: string) => {
     "category": category->,
     "subCategories": subCategories[]->,
     mainImage,
-    body,
+    body[]{
+      _type == 'gallery' => @->,
+      _type != 'gallery' => @,
+    },
     "date": publishedAt
     }`,
     { slug },
@@ -42,7 +45,7 @@ export const getGallery = async (slug: string) => {
     title,
     "category": category->,
     "subCategories": subCategories[]->,
-    'galleryImages': images[],
+    images[],
     description,
     "date": publishedAt
     }`,

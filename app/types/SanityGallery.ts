@@ -28,7 +28,8 @@ export interface SanityGallery {
   _rev: string
   title: string
   slug: Slug
-  galleryImages: Array<SanityGalleryImage>
+  images: Array<SanityGalleryImage>
+  coverImage: SanityGalleryImage
   category: Category
   subCategories: Array<Category>
   date?: string

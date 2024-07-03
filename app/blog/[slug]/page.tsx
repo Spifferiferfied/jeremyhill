@@ -21,7 +21,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const { title, category, subCategories, mainImage, body, date } = post
   return (
     <main className="container mx-auto w-full">
-      <article className="xl:w-1/2 mx-auto">
+      <article className="xl:w-3/4 mx-auto">
         <h1 className="font-bold text-4xl font-heading mb-4 mt-16 px-4 md:px-0">{title}</h1>
         <div className="md:flex md:flex-row flex-wrap justify-between items-middle mb-2 px-4 md:px-0">
           <div className="category flex flex-row justify-between items-end">

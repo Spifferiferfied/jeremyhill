@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { client, getGallery } from '@/lib/sanityClient'
 import { PortableText } from '@portabletext/react'
-import { ptComponents } from '@/lib/portableTextUtils'
+import { ptComponentsNoWidth } from '@/lib/portableTextUtils'
 import { Category } from '@/types/Category'
 import { SanityGallery, SanityGalleryImage } from '@/types/SanityGallery'
 import DateTag from '@/components/dateTag'
@@ -19,11 +19,11 @@ export async function generateStaticParams() {
 export default async function Gallery({ params }: { params: { slug: string } }) {
   const gallery: SanityGallery = await getGallery(params?.slug)
   if (!gallery) notFound()
-  const { title, category, subCategories, galleryImages, description, date } = gallery
+  const { title, category, subCategories, images, description, date } = gallery
   return (
     <main className="container mx-auto w-full">
       <h1 className="font-bold text-4xl font-heading mb-4 mt-16 px-4 md:px-0">{title}</h1>
-      <div className="md:flex md:flex-row flex-wrap justify-between items-middle mb-2 px-4 md:px-0">
+      <div className="md:flex md:flex-row flex-wrap justify-between items-middle mb-2 px-4 md:px-0 ">
         <div className="category flex flex-row justify-between items-end">
           { category && (<Tag title={ category.title } name={ category.name?.current } className="me-3 md:mb-0" />)}
           { subCategories
@@ -38,11 +38,11 @@ export default async function Gallery({ params }: { params: { slug: string } }) 
         ) }
       </div>
       <div className="px-4 md:px-0">
-        {description && <PortableText value={ description } components={ ptComponents } />}
+        {description && <PortableText value={ description } components={ ptComponentsNoWidth } />}
       </div>
       <div className="image-gallery flex flex-row flex-wrap justify-stretch items-center mx-auto w-full px-4 md:px-0">
-        { galleryImages.length > 0
-        && galleryImages.map((image: SanityGalleryImage) => (
+        { images.length > 0
+        && images.map((image: SanityGalleryImage) => (
           <Suspense key={ image._key }>
             <GalleryImage image={ image } />
           </Suspense>
