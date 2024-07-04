@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Lato, Oswald } from 'next/font/google'
 import Header from '@/components/shared/header'
 import Footer from '@/components/shared/footer'
@@ -30,6 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={ `${ lato.variable } ${ oswald.variable }` }>
+      <GoogleTagManager gtmId="GTM-KNSHPX" />
       <body>
         <Header />
         {children}
