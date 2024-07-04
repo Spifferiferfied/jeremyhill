@@ -28,7 +28,9 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
           src={ urlFor(image).dpr(2).url() }
           alt={ image.alt }
           className="!relative max-h-[85vh]"
-          fill
+          width={ 2000 }
+          height={ 2000 }
+          style={ { width: 'auto', height: 'auto' } }
         />
         <button className="close-btn absolute top-3 right-3 border-0 outline-none" type="button" onClick={ closeDialog }>close</button>
       </dialog>
