@@ -42,9 +42,11 @@ const codeBlockComponent = ({ value }: { value: SanityCodeBlock }) => (
 )
 
 const galleryComponent = ({ value }: { value: SanityGallery }) => (
-  <div className="gallery-block mb-4 mx-auto max-w-[50%]">
-    <h2 className="font-heading mb-4 text-3xl">{ value.title }</h2>
-    <Link href={ `/galleries/${ value.slug.current }` }>
+  <div className="gallery-block mb-4 mx-auto md:max-w-[50%]">
+    <h2 className="font-heading mb-4 text-3xl">
+      { value.title }
+    </h2>
+    <Link className="gallery-thumb block relative" href={ `/galleries/${ value.slug.current }` }>
       <Image
         src={ urlFor(value.coverImage).dpr(2).auto('format').url() }
         alt={ value.coverImage.alt || ' ' }
@@ -52,6 +54,8 @@ const galleryComponent = ({ value }: { value: SanityGallery }) => (
         height={ 500 }
         className="thumb in-block mb-2 h hover:brightness-50 hover:cursor-pointer"
       />
+      <span className="open font-heading text-xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white">Open Gallery</span>
+      <span className="absolute -top-1 -right-1 bg-grey-900 text-white p-2">Photo Gallery</span>
     </Link>
   </div>
 )

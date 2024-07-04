@@ -21,6 +21,15 @@
     font-size: var(--border-offset);
   }
 }
+.gallery-thumb {
+  .open {
+    opacity: 0;
+    transition: .35s;
+  }
+  &:hover .open {
+    opacity: 1;
+  }
+}
 
 dialog {
   .close-btn {
