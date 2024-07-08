@@ -1,5 +1,6 @@
 import { client, getPost } from '@/lib/sanityClient'
 import { PortableText } from '@portabletext/react'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { urlFor, ptComponents } from '@/lib/portableTextUtils'
 import Tag from '@/components/blog/tag'
 import { Category } from '@/types/Category'
@@ -7,6 +8,21 @@ import DateTag from '@/components/dateTag'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { BlogPost } from '@/types/BlogPost'
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const post: BlogPost = await getPost(params?.slug)
+  const previousTitle = (await parent).title?.absolute || ''
+
+  return {
+    title: `${ post.title } - ${ previousTitle }`,
+    openGraph: {
+      images: [urlFor(post.mainImage).height(500).width(1500).dpr(2).url()],
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const paths = await client.fetch(

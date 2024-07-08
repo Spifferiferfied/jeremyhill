@@ -20,8 +20,8 @@ const oswald = Oswald({
 })
 
 export const metadata: Metadata = {
-  title: 'Jeremy Hill',
-  description: 'The personal website of Jeremy Hill',
+  title: 'jeremyhill.com',
+  description: 'The personal website of Jeremy Hill, Chicago, IL',
 }
 
 export default function RootLayout({
