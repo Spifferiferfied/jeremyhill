@@ -3,6 +3,9 @@
   .tag-$(name) {
     background-color: var(--color-$(color)-400);
     color: var(--color-white);
+    &:hover {
+      background-color: var(--color-$(color)-800);
+    }
   }
   .blog-item-$(name) {
     article {
@@ -13,6 +16,9 @@
       }
       .read-more {
         background-color: var(--color-$(color)-400);
+        &:hover {
+          background-color: var(--color-$(color)-800);
+        }
       }
     }
   }
@@ -21,6 +27,9 @@
   .tag-$(name) {
     background-color: var(--color-$(color)-400);
     color: var(--color-black);
+    &:hover {
+      background-color: var(--color-$(color)-800);
+    }
   }
   .blog-item-$(name) {
     article {
@@ -31,6 +40,9 @@
       }
       .read-more {
         background-color: var(--color-$(color)-400);
+        &:hover {
+          background-color: var(--color-$(color)-800);
+        }
       }
     }
   }
@@ -39,6 +51,10 @@
 [class*='tag-'] {
   background-color: var(--color-grey-400);
   color: var(--color-black);
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-grey-800);
+  }
 }
 [class*='blog-item-'] {
   article {
@@ -49,6 +65,10 @@
     }
     .read-more {
       background-color: var(--color-grey-400);
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-grey-800);
+      }
     }
   }
 }

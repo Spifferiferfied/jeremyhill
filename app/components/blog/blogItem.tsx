@@ -38,7 +38,7 @@ export default function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
             { blogPost.blurb && <PortableText value={ blogPost.blurb } components={ ptComponents } /> }
           </div>
           <div
-            className="text-sm inline-block px-2 py-1 read-more float-right hover:underline no-underline self-end place-self-end"
+            className="text-sm inline-block px-2 py-1 read-more float-right no-underline self-end place-self-end"
           >
             Read More...
           </div>
