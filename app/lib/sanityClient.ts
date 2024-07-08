@@ -92,12 +92,12 @@ export const getPosts = async (count: number | null, filter = { } as BlogListFil
     params = { category: filter?.category }
   }
   if (count) {
-    countString = `[${ filter?.page ? filter.page * count : 0 }..${ filter?.page ? (filter.page + 1) * count : count - 1 }]`
+    countString = `[${ filter?.page ? filter.page * count : 0 }...${ filter?.page ? (filter.page + 1) * count : count }]`
   }
   const query = groq`*[_type == "post"
     ${ filterString }]
-    ${ countString }
     | order(publishedAt desc)
+    ${ countString }
     {
       slug,
       title,
@@ -105,7 +105,6 @@ export const getPosts = async (count: number | null, filter = { } as BlogListFil
       blurb,
       mainImage
     }`
-
   const posts = await client.fetch(
     query,
     params,
