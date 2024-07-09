@@ -16,14 +16,14 @@ export default function BlogItem({ blogPost, side = 'left' }: BlogItemProps) {
       >
         <Image
           fill
-          src={ urlFor(blogPost.mainImage).width(1500).height(500).url() }
+          src={ urlFor(blogPost.mainImage).width(1500).height(500).dpr(2).url() }
           className="md:object-cover object-contain md:inline-block hidden"
           alt={ blogPost.mainImage.alt }
         />
         <Image
           height={ 1500 }
           width={ 1500 }
-          src={ urlFor(blogPost.mainImage).width(1500).height(1500).url() }
+          src={ urlFor(blogPost.mainImage).width(1500).height(1500).dpr(2).url() }
           className="md:object-cover object-contain md:hidden absolute top-0 left-0"
           alt={ blogPost.mainImage.alt }
         />
