@@ -40,7 +40,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <article className="xl:w-3/4 mx-auto">
         <h1 className="font-bold text-4xl font-heading mb-4 mt-16 px-4 md:px-0">{title}</h1>
         <div className="md:flex md:flex-row flex-wrap justify-between items-middle mb-2 px-4 md:px-0">
-          <div className="category flex flex-row justify-between items-end">
+          <div className="category flex flex-row justify-start items-end flex-wrap">
             { category && (<Tag title={ category.title } name={ category.name?.current } className="me-3 md:mb-0" />)}
             { subCategories
             && subCategories.map((subCategory: Category) => <Tag title={ subCategory.title } name={ subCategory.name?.current } key={ subCategory.name?.current } className="me-3 md:mb-0" />)}
