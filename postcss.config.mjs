@@ -4,7 +4,7 @@ const config = {
     'postcss-import': {},
     'tailwindcss/nesting': {},
     'postcss-mixins': {},
-    tailwindcss: {},
+    'tailwindcss': {},
   },
 }
 
