@@ -14,7 +14,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
     ref.current?.close()
   }
   const dialogEnter = (e: KeyboardEvent<HTMLElement>) => {
-    if ( e.key == 'Enter') {
+    if ( e.key === 'Enter' ) {
       closeDialog()
     }
   }
@@ -28,7 +28,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
         width={ 500 }
         onClick={ openDialog }
       />
-      <dialog ref={ ref } className="fixed" onClick={ closeDialog } onKeyDown={ dialogEnter }>
+      <dialog ref={ ref } className="fixed" onClick={ closeDialog } onKeyDown={ dialogEnter } role="button" tabindex={0} >
         <Image
           src={ urlFor(image).dpr(2).url() }
           alt={ image.alt }
