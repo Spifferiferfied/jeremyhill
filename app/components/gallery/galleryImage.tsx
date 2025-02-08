@@ -14,7 +14,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
     ref.current?.close()
   }
   const dialogEnter = (e: KeyboardEvent<HTMLImageElement>) => {
-    if( e.keycode == 13) {
+    if( e.key == 'Enter') {
       closeDialog()
     }
   }
