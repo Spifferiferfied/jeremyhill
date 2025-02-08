@@ -23,7 +23,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
         width={ 500 }
         onClick={ openDialog }
       />
-      <dialog ref={ ref } className="fixed">
+      <dialog ref={ ref } className="fixed" onClick={ closeDialog }>
         <Image
           src={ urlFor(image).dpr(2).url() }
           alt={ image.alt }
@@ -32,6 +32,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
           height={ 2000 }
           style={ { width: 'auto', height: 'auto' } }
         />
+        <figcaption className="absolute bottom-0 p-2">{ image.caption }</figcaption>
         <button className="close-btn absolute top-3 right-3 border-0 outline-none" type="button" onClick={ closeDialog }>close</button>
       </dialog>
     </>
