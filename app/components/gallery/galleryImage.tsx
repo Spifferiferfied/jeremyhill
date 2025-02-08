@@ -28,18 +28,20 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
         width={ 500 }
         onClick={ openDialog }
       />
-      <dialog ref={ ref } className="fixed" onClick={ closeDialog } onKeyDown={ dialogEnter } role="button" tabIndex={ 0 }>
-        <Image
-          src={ urlFor(image).dpr(2).url() }
-          alt={ image.alt }
-          className="!relative max-h-[85vh]"
-          width={ 2000 }
-          height={ 2000 }
-          style={ { width: 'auto', height: 'auto' } }
-        />
-        <figcaption className="absolute bottom-0 p-2">{ image.caption }</figcaption>
-        <button className="close-btn absolute top-3 right-3 border-0 outline-none" type="button" onClick={ closeDialog }>close</button>
-      </dialog>
+      <div  onClick={ closeDialog } onKeyDown={ dialogEnter } role="button" tabIndex={ 0 }>
+        <dialog ref={ ref } className="fixed">
+          <Image
+            src={ urlFor(image).dpr(2).url() }
+            alt={ image.alt }
+            className="!relative max-h-[85vh]"
+            width={ 2000 }
+            height={ 2000 }
+            style={ { width: 'auto', height: 'auto' } }
+          />
+          <figcaption className="absolute bottom-0 p-2">{ image.caption }</figcaption>
+          <button className="close-btn absolute top-3 right-3 border-0 outline-none" type="button" onClick={ closeDialog }>close</button>
+        </dialog>
+      </div>
     </>
   )
 }
