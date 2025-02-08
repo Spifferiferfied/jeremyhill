@@ -28,7 +28,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
         width={ 500 }
         onClick={ openDialog }
       />
-      <dialog ref={ ref } className="fixed" onClick={ closeDialog } onKeyDown={ dialogEnter } role="button" tabindex={0} >
+      <dialog ref={ ref } className="fixed" onClick={ closeDialog } onKeyDown={ dialogEnter } role="button" tabIndex={0} >
         <Image
           src={ urlFor(image).dpr(2).url() }
           alt={ image.alt }
