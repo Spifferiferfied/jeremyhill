@@ -13,6 +13,11 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
   const closeDialog = () => {
     ref.current?.close()
   }
+  const dialogEnter = (e) => {
+    if( e.keycode == 13) {
+      closeDialog()
+    }
+  }
   return (
     <>
       <Image
@@ -23,7 +28,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
         width={ 500 }
         onClick={ openDialog }
       />
-      <dialog ref={ ref } className="fixed" onClick={ closeDialog }>
+      <dialog ref={ ref } className="fixed" onClick={ closeDialog } onKeydown={ dialogEnter }>
         <Image
           src={ urlFor(image).dpr(2).url() }
           alt={ image.alt }
