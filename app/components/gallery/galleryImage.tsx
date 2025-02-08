@@ -38,7 +38,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
             height={ 2000 }
             style={ { width: 'auto', height: 'auto' } }
           />
-          <figcaption className="absolute bottom-0 p-2">{ image.caption }</figcaption>
+          <figcaption className="absolute bottom-0 p-2 bg-opacity-25 bg-black text-white">{ image.caption }</figcaption>
           <button className="close-btn absolute top-3 right-3 border-0 outline-none" type="button" onClick={ closeDialog }>close</button>
         </dialog>
       </div>
