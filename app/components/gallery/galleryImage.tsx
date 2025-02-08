@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, KeyboardEvent } from 'react'
 import Image from 'next/image'
 import { SanityGalleryImage } from '@/types/SanityGallery'
 import { urlFor } from '@/lib/portableTextUtils'
