@@ -1,12 +1,36 @@
 'use client'
 
-import { useRef, KeyboardEvent } from 'react'
+import { useRef, useState, KeyboardEvent, useEffect } from 'react'
 import Image from 'next/image'
 import { SanityGalleryImage } from '@/types/SanityGallery'
 import { urlFor } from '@/lib/portableTextUtils'
 
+async function getImageDataUrl(imageUrl: string) {
+  const response = await fetch(imageUrl)
+  const blob = await response.blob()
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onloadend = () => resolve(reader.result)
+    reader.onerror = reject
+    reader.readAsDataURL(blob)
+  })
+}
+
 export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
+  const [dataUrlThumb, setDataUrlThumb] = useState('')
+  const [dataUrlFull, setDataUrlFull] = useState('')
   const ref = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    async function fetchDataUrl() {
+      const thumbResult = await getImageDataUrl(urlFor(image).height(300).quality(100).dpr(2).url())
+      const fullResult = await getImageDataUrl(urlFor(image).dpr(2).url())
+      setDataUrlThumb(thumbResult as string)
+      setDataUrlFull(fullResult as string)
+    }
+    fetchDataUrl()
+  })
+
   const openDialog = () => {
     ref.current?.showModal()
   }
@@ -21,7 +45,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
   return (
     <>
       <Image
-        src={ urlFor(image).height(300).quality(100).dpr(2).url() }
+        src={ dataUrlThumb }
         alt={ image.alt }
         className={ `thumb p-2 md:max-h-[300px] block object-cover hover:brightness-50 hover:cursor-pointer ${ image.orientation === 'landscape' ? 'flex-1' : '' }` }
         height={ 500 }
@@ -31,7 +55,7 @@ export default function GalleryImage({ image }: { image: SanityGalleryImage }) {
       <div onClick={ closeDialog } onKeyDown={ dialogEnter } role="presentation">
         <dialog ref={ ref } className="fixed">
           <Image
-            src={ urlFor(image).dpr(2).url() }
+            src={ dataUrlFull }
             alt={ image.alt }
             className="!relative max-h-[85vh]"
             width={ 2000 }
